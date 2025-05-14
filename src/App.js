@@ -2,16 +2,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { auth } from '../firebase';
 
-import { auth, initFirebase } from './firebase'; // ✅ make sure the path is correct
-
-import LoginScreen from './src/screens/LoginScreen';
-import SignupScreen from './src/screens/SignupScreen';
-import TransactionsScreen from './src/screens/TransactionsScreen';
+import LoginScreen from './screens/LoginScreen';
+import SignupScreen from './screens/SignupScreen';
+import TransactionsScreen from './screens/TransactionsScreen'; // ✅ import this
 
 const Stack = createNativeStackNavigator();
-
-initFirebase(); // ✅ Call this BEFORE using `auth`
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -22,10 +19,11 @@ export default function App() {
       setUser(user);
       setLoading(false);
     });
+
     return unsubscribe;
   }, []);
 
-  if (loading) return null;
+  if (loading) return null; // optional loading spinner
 
   return (
     <NavigationContainer>
