@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# Personal Finance Tracker App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile app built with **React Native + Firebase** that allows users to track income and expenses, view monthly summaries, visualize data with charts, and filter/search past transactions.
 
-## Get started
+---
 
-1. Install dependencies
+## 🔐 Features
 
-   ```bash
-   npm install
-   ```
+- Firebase Authentication (email/password)
+- Add / Edit / Delete transactions
+- Monthly income, expense, and balance summary
+- Pie chart visualization (Income vs. Expenses)
+- Month filtering + search by title
+- Logout & session persistence
+- Protected screens for logged-in users only
+- Firebase Firestore integration per user
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 📦 Technologies Used
 
-In the output, you'll find options to open the app in a
+- React Native (with Expo)
+- Firebase Authentication
+- Firebase Firestore
+- Chart library (Victory Native / any chart lib)
+- React Hooks & Picker
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🚀 How to Run
 
-## Get a fresh project
+1. Clone the repo  
+git clone https://github.com/Minhaj2x/Personal-Finance-Tracker-App.git
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
+2. Install dependencies  
+npm install
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
+3. Add your own Firebase config inside `/src/firebase.js`  
+```js
+// src/firebase.js
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
-To learn more about developing your project with Expo, look at the following resources:
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+Start the app
+npx expo start
+⚠️ Firebase keys should NOT be committed publicly.
+📂 Folder Structure
 
-## Join the community
+/src
+  /components
+    ChartSection.jsx
+  /screens
+    TransactionsScreen.jsx
+  firebase.js
+  App.js
+🧑‍💻 Developed By
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Minhaj Ahmed
+For INF657 – Mobile Web Development II
+Spring 2025 @ Fort Hays State University
